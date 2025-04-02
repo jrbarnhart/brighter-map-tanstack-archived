@@ -36,6 +36,9 @@ importers:
       '@tanstack/eslint-config':
         specifier: ^0.1.0
         version: 0.1.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.71.5
+        version: 5.71.5(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
@@ -647,6 +650,11 @@ packages:
   '@tanstack/eslint-config@0.1.0':
     resolution: {integrity: sha512-/lVsQmmezpqqbCFtaxGNkoSnQ/+H0PAHyHF37PGQ6ZBrF8RXktgazMdsD5SCaNT9oEnGCl274GCZ9sY80b50Sg==}
     engines: {node: '>=18'}
+
+  '@tanstack/eslint-plugin-query@5.71.5':
+    resolution: {integrity: sha512-6EDWMUQc35HEYtZrX4yRP7vBXjUhNLwO0JwLzkV14lNpTlpnPbNUltvgh+cUJBh3awpOuUNNuxTL96BG3azLmw==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
 
   '@tanstack/history@1.114.29':
     resolution: {integrity: sha512-OTRMhwidScQSA0xsc5OCtm3K/oAChe47jy1e4OY3VpXUnKrI7C8iwfQ9XDRdpdsRASH2xi6P5I0+7ksFBehaQQ==}
@@ -2556,6 +2564,14 @@ snapshots:
       vue-eslint-parser: 9.4.3(eslint@9.23.0(jiti@2.4.2))
     transitivePeerDependencies:
       - eslint
+      - supports-color
+      - typescript
+
+  '@tanstack/eslint-plugin-query@5.71.5(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)':
+    dependencies:
+      '@typescript-eslint/utils': 8.29.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
+      eslint: 9.23.0(jiti@2.4.2)
+    transitivePeerDependencies:
       - supports-color
       - typescript
 
