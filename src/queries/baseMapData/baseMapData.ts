@@ -9,17 +9,12 @@ type VendorsResponse =
 
 export async function fetchBaseMapData() {
   // console.info('Fetching base map data...');
-  // Base map will show rooms with base contents
-  // including room name, monster name, resource name, shop name, obelisk, portal
-  // Vendors need to be gotten too
   try {
-    const queries = [
-      axiosClient.get<RoomsResponse>('/rooms'),
-      axiosClient.get<VendorsResponse>('npcs/vendors'),
-    ]
-    const baseMapData = await Promise.all(queries)
+    const roomsQuery = axiosClient.get<RoomsResponse>('/rooms')
+    const vendorsQuery = axiosClient.get<VendorsResponse>('npcs/vendors')
 
-    return baseMapData
+    const response = await Promise.all([roomsQuery, vendorsQuery])
+    return { rooms: response[0].data, vendors: response[1].data }
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)
