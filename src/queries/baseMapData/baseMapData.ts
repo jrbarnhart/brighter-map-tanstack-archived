@@ -12,7 +12,7 @@ export async function fetchBaseMapData() {
     const vendorsQuery =
       axiosClient.get<
         paths['/npcs/vendors']['get']['responses']['200']['content']['application/json']
-      >('npcs/vendors')
+      >('/npcs/vendors')
 
     const response = await Promise.all([roomsQuery, vendorsQuery])
     return { rooms: response[0].data, vendors: response[1].data }
