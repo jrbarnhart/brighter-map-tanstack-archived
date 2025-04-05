@@ -2,16 +2,17 @@ import axios from 'axios'
 import { axiosClient } from '../axiosClient'
 import type { paths } from '@/lib/types/apiTypes'
 
-type RoomsResponse =
-  paths['/rooms']['get']['responses']['200']['content']['application/json']
-type VendorsResponse =
-  paths['/npcs/vendors']['get']['responses']['200']['content']['application/json']
-
 export async function fetchBaseMapData() {
   // console.info('Fetching base map data...');
   try {
-    const roomsQuery = axiosClient.get<RoomsResponse>('/rooms')
-    const vendorsQuery = axiosClient.get<VendorsResponse>('npcs/vendors')
+    const roomsQuery =
+      axiosClient.get<
+        paths['/rooms']['get']['responses']['200']['content']['application/json']
+      >('/rooms')
+    const vendorsQuery =
+      axiosClient.get<
+        paths['/npcs/vendors']['get']['responses']['200']['content']['application/json']
+      >('npcs/vendors')
 
     const response = await Promise.all([roomsQuery, vendorsQuery])
     return { rooms: response[0].data, vendors: response[1].data }
