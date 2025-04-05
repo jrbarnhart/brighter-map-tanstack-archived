@@ -9,13 +9,28 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
+  // Base map data comes from loader
   const baseMapQuery = useSuspenseQuery(baseMapDataQueryOptions)
   const baseMapData = baseMapQuery.data
+
+  // Search data is fetched only when search bar first focused
+
+  // Drop table data is fetched only when a monster variant link is clicked
+
+  // Quest steps data is fetched only when a quest link is clicked
 
   return (
     <div className="text-center">
       <p>Total rooms: {baseMapData.rooms.length}</p>
       <p>Total vendors: {baseMapData.vendors.length}</p>
+      <label htmlFor="search">
+        Search:
+        <input
+          type="search"
+          placeholder="Search..."
+          className="border border-gray-400"
+        />
+      </label>
     </div>
   )
 }
