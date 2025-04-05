@@ -9,7 +9,8 @@
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "check": "prettier --write . && eslint --fix",
+    "get-api-types": "pnpx openapi-typescript https://brshapi.com/api-json -o ./src/lib/types/apiTypes.d.ts"
   },
   "dependencies": {
     "@react-three/drei": "^10.0.5",
