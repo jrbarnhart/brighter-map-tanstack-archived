@@ -2,7 +2,7 @@ import type { paths } from '@/lib/types/apiTypes'
 import { axiosClient } from '../axiosClient'
 import axios from 'axios'
 
-export async function fetchDropTableData() {
+export async function fetchDropTables() {
   // console.info('Fetching drop data...');
   try {
     const dropTablesQuery = await axiosClient.get<
