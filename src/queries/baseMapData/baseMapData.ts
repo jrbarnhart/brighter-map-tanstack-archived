@@ -26,23 +26,3 @@ export async function fetchBaseMapData() {
     }
   }
 }
-
-// Rooms will not include access to monster/resource variants
-// They will include the "base" levels of things like the monster/resource which includes the base name.
-// Ex Deathcrow vs Beadey-eyed Deathcrow
-// Drop tables are also not included and will need a query
-
-// So I'll need monster variants and resource variants queries
-// Same if I want to display quests/steps misc items, consumable/variants, armor/variants, and weapon/variants
-
-// So the search bar when intearcted with should probably fetch:
-// quests
-// misc items, armor variants, weapon variants, consumable variants
-// monster variants
-// resource variants
-
-// When a monster variant link is interacted with should fetch:
-// drop tables
-
-// When a quest link is interacted with should fetch:
-// quest steps
