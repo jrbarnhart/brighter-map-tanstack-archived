@@ -9,7 +9,7 @@ export async function fetchResourceVariants() {
       paths['/items/resources/variants']['get']['responses']['200']['content']['application/json']
     >('/items/resources/variants')
 
-    return { resourceVariants: resourceVariantsQuery.data }
+    return resourceVariantsQuery.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)

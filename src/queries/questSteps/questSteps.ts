@@ -10,7 +10,7 @@ export async function fetchQuestSteps() {
         paths['/quests/steps']['get']['responses']['200']['content']['application/json']
       >('/quests/steps')
 
-    return { questSteps: questStepsQuery.data }
+    return questStepsQuery.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)

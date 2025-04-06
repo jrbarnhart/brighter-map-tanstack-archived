@@ -10,7 +10,7 @@ export async function fetchMonsterVariants() {
         paths['/monsters/variants']['get']['responses']['200']['content']['application/json']
       >('/monsters/variants')
 
-    return { monsterVariants: monsterVariantsQuery.data }
+    return monsterVariantsQuery.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)

@@ -9,7 +9,7 @@ export async function fetchArmorVariants() {
       paths['/items/armors/variants']['get']['responses']['200']['content']['application/json']
     >('/items/armors/variants')
 
-    return { armorVariants: armorVariantsQuery.data }
+    return armorVariantsQuery.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)

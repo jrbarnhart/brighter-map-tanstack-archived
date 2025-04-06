@@ -9,7 +9,7 @@ export async function fetchConsumableVariants() {
       paths['/items/consumables/variants']['get']['responses']['200']['content']['application/json']
     >('/items/consumables/variants')
 
-    return { consumableVariants: consumableVariantsQuery.data }
+    return consumableVariantsQuery.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)

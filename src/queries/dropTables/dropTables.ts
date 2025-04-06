@@ -9,7 +9,7 @@ export async function fetchDropTables() {
       paths['/monsters/drop-tables']['get']['responses']['200']['content']['application/json']
     >('/monsters/drop-tables')
 
-    return { dropTables: dropTablesQuery.data }
+    return dropTablesQuery.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)
