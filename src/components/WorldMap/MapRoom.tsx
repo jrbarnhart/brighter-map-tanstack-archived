@@ -1,11 +1,24 @@
 import * as THREE from 'three'
-import { Line } from '@react-three/drei'
 
-export default function MapRoom() {
-  const points = []
-  points.push(new THREE.Vector3(-10, 0, 0))
-  points.push(new THREE.Vector3(0, 10, 0))
-  points.push(new THREE.Vector3(10, 0, 0))
+type MapRoomProps = {
+  points: [number, number][]
+}
 
-  return <Line points={points} color={'black'} linewidth={3} />
+export default function MapRoom({ ...props }: MapRoomProps) {
+  const { points } = props
+
+  const shape = new THREE.Shape()
+
+  for (const point of points) {
+    shape.moveTo(point[0], point[1])
+  }
+
+  return (
+    <mesh>
+      <shapeGeometry>
+        <shape moveTo={points} />
+      </shapeGeometry>
+      <meshBasicMaterial color={'green'} />
+    </mesh>
+  )
 }
