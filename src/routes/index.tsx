@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div id="app-container" className="h-svh w-svw">
-      <WorldMap />
+      <WorldMap baseMapData={baseMapData} />
     </div>
   )
 }
