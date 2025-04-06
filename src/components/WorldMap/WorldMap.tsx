@@ -3,6 +3,15 @@ import { OrbitControls } from '@react-three/drei'
 import roomRenderData from '@/lib/mapData/roomRenderData'
 import { useMemo } from 'react'
 import generateRoomShapes from './generateRoomShapes'
+import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
+import type { components } from '@/lib/types/apiTypes'
+
+type WorldMapProps = {
+  baseMapData: BaseMapData
+}
+
+export type CombinedRoomData = RoomRenderData[number] &
+  components['schemas']['RoomEntity']
 
 function Controls() {
   const { invalidate } = useThree()
@@ -10,9 +19,48 @@ function Controls() {
   return <OrbitControls enableRotate={false} onChange={() => invalidate()} />
 }
 
-export default function WorldMap() {
+export default function WorldMap({ ...props }: WorldMapProps) {
+  const { baseMapData } = props
+
+  // Create a lookup map of the base data rooms
+  const baseDataMap = new Map<string, components['schemas']['RoomEntity']>()
+  for (const room of baseMapData.rooms) {
+    baseDataMap.set(room.name, room)
+  }
+
+  // Combine base data from api and render data
+  const combinedRoomData: CombinedRoomData[] = roomRenderData.map(
+    (renderData) => {
+      const baseRoomData = baseDataMap.get(renderData.name)
+      if (baseRoomData) {
+        return {
+          ...renderData,
+          ...baseRoomData,
+        }
+      }
+      console.error(
+        `Base data not found for room: ${renderData.name}. Check this room in roomRenderData.ts for mismatch with api room name.`,
+      )
+      const emptyBaseData: components['schemas']['RoomEntity'] = {
+        banks: [],
+        craftingSkills: [],
+        id: -100,
+        resources: [],
+        monsters: [],
+        name: 'ERROR',
+        npcs: [],
+        obelisk: false,
+        portal: false,
+        questSteps: [],
+        region: { id: -100, name: 'ERROR' },
+        regionId: -100,
+      }
+      return { ...renderData, ...emptyBaseData }
+    },
+  )
+
   const shapes = useMemo(() => {
-    return generateRoomShapes(roomRenderData)
+    return generateRoomShapes(combinedRoomData)
   }, [])
 
   return (
