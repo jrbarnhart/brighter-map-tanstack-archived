@@ -29,8 +29,8 @@ export default function WorldMap({ ...props }: WorldMapProps) {
   }
 
   // Combine base data from api and render data
-  const combinedRoomData: CombinedRoomData[] = roomRenderData.map(
-    (renderData) => {
+  const combinedRoomData = useMemo(() => {
+    return roomRenderData.map((renderData) => {
       const baseRoomData = baseDataMap.get(renderData.name)
       if (baseRoomData) {
         return {
@@ -56,9 +56,10 @@ export default function WorldMap({ ...props }: WorldMapProps) {
         regionId: -100,
       }
       return { ...renderData, ...emptyBaseData }
-    },
-  )
+    })
+  }, [])
 
+  // Create the room shapes using combined data
   const shapes = useMemo(() => {
     return generateRoomShapes(combinedRoomData)
   }, [])
