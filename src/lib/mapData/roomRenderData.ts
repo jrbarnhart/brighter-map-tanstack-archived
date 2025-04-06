@@ -1,4 +1,4 @@
-const hopeportRoomData: RoomRenderData[] = [
+const hopeportRoomData: RoomRenderData = [
   {
     name: "Captain Degreene's Office",
     originOffset: [0, 0],
@@ -333,7 +333,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: "Brannof's Dining Room",
-    labelOffset: [-4, 0],
     originOffset: [-32, 48],
     points: [
       [0, 0],
@@ -404,7 +403,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'Hairdresser',
-    labelOffset: [0, 1],
     originOffset: [30, 44],
     points: [
       [0, 0],
@@ -446,7 +444,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'Pipe Alley',
-    labelOffset: [0, -5],
     originOffset: [47, 39],
     points: [
       [0, 0],
@@ -463,7 +460,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'The Cloakroom',
-    labelOffset: [0, -2],
     originOffset: [40, 44],
     points: [
       [0, 0],
@@ -480,7 +476,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: "The Forager's Warehouse",
-    labelOffset: [4, -1],
     originOffset: [50, 41],
     points: [
       [0, 0],
@@ -569,7 +564,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'Enchantress Shop',
-    labelOffset: [4, 2],
     originOffset: [46, 60],
     points: [
       [0, 0],
@@ -586,7 +580,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: "Tim's Alley",
-    labelOffset: [0, -3],
     originOffset: [43, 58],
     points: [
       [0, 0],
@@ -689,7 +682,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'Monob Row',
-    labelOffset: [0, 1],
     originOffset: [36, 58],
     points: [
       [0, 0],
@@ -706,7 +698,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: "Thieve's Den",
-    labelOffset: [-1, -3],
     originOffset: [28, 58],
     points: [
       [0, 0],
@@ -755,7 +746,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'Murk Close',
-    labelOffset: [5, -3],
     originOffset: [48, 71],
     points: [
       [0, 0],
@@ -774,7 +764,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'Limpet Lane',
-    labelOffset: [-6, 0],
     originOffset: [43, 76],
     points: [
       [0, 0],
@@ -791,7 +780,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'Nook Alley',
-    labelOffset: [3, 2],
     originOffset: [47, 79],
     points: [
       [0, 0],
@@ -962,7 +950,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
   {
     name: 'The Hooked Hand',
-    labelOffset: [0, -3],
     originOffset: [-2, 71],
     points: [
       [0, 0],
@@ -1636,6 +1623,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
 ]
 
-const roomRenderData = [...hopeportRoomData]
+const roomRenderData: RoomRenderData = [...hopeportRoomData]
 
 export default roomRenderData
