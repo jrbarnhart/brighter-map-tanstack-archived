@@ -1,0 +1,23 @@
+import type { paths } from '@/lib/types/apiTypes'
+import { axiosClient } from '../axiosClient'
+import axios from 'axios'
+
+export async function fetchConsumableVariants() {
+  // console.info('Fetching consumable variants...');
+  try {
+    const consumableVariantsQuery = await axiosClient.get<
+      paths['/items/consumables/variants']['get']['responses']['200']['content']['application/json']
+    >('/items/consumables/variants')
+
+    return { consumableVariants: consumableVariantsQuery.data }
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message)
+    } else {
+      console.error(error)
+      throw new Error(
+        'An unexpected error occurred while fetching consumable variants.',
+      )
+    }
+  }
+}
