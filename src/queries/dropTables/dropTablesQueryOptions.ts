@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchDropTableData } from './dropTable'
+import { fetchDropTableData } from './dropTables'
 
 export const dropTablesKey = 'drop-tables'
 
