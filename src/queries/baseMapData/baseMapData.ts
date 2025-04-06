@@ -26,3 +26,5 @@ export async function fetchBaseMapData() {
     }
   }
 }
+
+export type BaseMapData = Awaited<ReturnType<typeof fetchBaseMapData>>
