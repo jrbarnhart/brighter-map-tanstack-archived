@@ -3,7 +3,7 @@ import { fetchDropTables } from './dropTables'
 
 export const dropTablesKey = 'drop-tables'
 
-export const dropTableQueryOptions = (enabled: boolean) =>
+export const dropTablesQueryOptions = (enabled: boolean) =>
   queryOptions({
     queryKey: [dropTablesKey],
     staleTime: 1800000, // 30 min since data set is large and relatively unchanging
