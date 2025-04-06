@@ -5,4 +5,4 @@ type RoomRenderData = {
   fillColor: string
   borderColor: string
   labelOffset?: [number, number]
-}
+}[]
