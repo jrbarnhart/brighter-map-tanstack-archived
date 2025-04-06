@@ -1,6 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { baseMapDataQueryOptions } from '@/queries/baseMapData/baseMapDataQueryOptions'
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { useQuery, useSuspenseQuery } from '@tanstack/react-query'
+import { useState } from 'react'
+import { miscItemsQueryOptions } from '@/queries/miscItems/miscItemsQueryOptions'
+import { armorVariantsQueryOptions } from '@/queries/armorVariants/armorVariantsQueryOptions'
+import { weaponVariantsQueryOptions } from '@/queries/weaponVariants/weaponVariantsQueryOptions'
+import { consumableVariantsQueryOptions } from '@/queries/consumableVariants/consumableVariantsQueryOptions'
+import { monsterVariantsQueryOptions } from '@/queries/monsterVariants/monsterVariantsQueryOptions'
+import { resourceVariantsQueryOptions } from '@/queries/resourceVariants/resourceVariantsQueryOptions'
+import { dropTablesQueryOptions } from '@/queries/dropTables/dropTablesQueryOptions'
+import { questsQueryOptions } from '@/queries/quests/questsQueryOptions'
+import { questStepsQueryOptions } from '@/queries/questSteps/questStepsQueryOptions'
 
 export const Route = createFileRoute('/')({
   loader: ({ context: { queryClient } }) =>
@@ -13,11 +23,47 @@ function App() {
   const baseMapQuery = useSuspenseQuery(baseMapDataQueryOptions)
   const baseMapData = baseMapQuery.data
 
-  // Search data is fetched only when search bar first focused
+  const [enableMiscItems, setEnableMiscItems] = useState(false)
+  const { data: miscItems } = useQuery(miscItemsQueryOptions(enableMiscItems))
 
-  // Drop table data is fetched only when a monster variant link is clicked
+  const [enableArmorVariants, setEnableArmorVariants] = useState(false)
+  const { data: armorVariants } = useQuery(
+    armorVariantsQueryOptions(enableArmorVariants),
+  )
 
-  // Quest steps data is fetched only when a quest link is clicked
+  const [enableWeaponVariants, setEnableWeaponVariants] = useState(false)
+  const { data: weaponVariants } = useQuery(
+    weaponVariantsQueryOptions(enableWeaponVariants),
+  )
+
+  const [enableConsumableVariants, setEnableConsumableVariants] =
+    useState(false)
+  const { data: consumableVariants } = useQuery(
+    consumableVariantsQueryOptions(enableConsumableVariants),
+  )
+
+  const [enableMonsterVariants, setEnableMonsterVariants] = useState(false)
+  const { data: monsterVariants } = useQuery(
+    monsterVariantsQueryOptions(enableMonsterVariants),
+  )
+
+  const [enableResourceVariants, setEnableResourceVariants] = useState(false)
+  const { data: resourceVariants } = useQuery(
+    resourceVariantsQueryOptions(enableResourceVariants),
+  )
+
+  const [enableDropTables, setEnableDropTables] = useState(false)
+  const { data: dropTables } = useQuery(
+    dropTablesQueryOptions(enableDropTables),
+  )
+
+  const [enableQuests, setEnableQuests] = useState(false)
+  const { data: quests } = useQuery(questsQueryOptions(enableQuests))
+
+  const [enableQuestSteps, setEnableQuestSteps] = useState(false)
+  const { data: questSteps } = useQuery(
+    questStepsQueryOptions(enableQuestSteps),
+  )
 
   return (
     <div className="text-center">
@@ -29,8 +75,15 @@ function App() {
           type="search"
           placeholder="Search..."
           className="border border-gray-400"
+          onFocus={() => {
+            setEnableMiscItems(true)
+          }}
         />
       </label>
+      <p>Monster Variants: {miscItems?.length}</p>
+      <a href="" onMouseOver={() => setEnableMiscItems(true)}>
+        Monster Link!
+      </a>
     </div>
   )
 }
