@@ -6,21 +6,27 @@ import type { CombinedRoomData } from './WorldMap'
 const generateRoomShapes = (
   combinedRoomData: CombinedRoomData[],
 ): React.ReactNode[] => {
-  // Create an array to hold all room elements
   const allRoomElements: React.ReactNode[] = []
 
-  // Process each room in the array
   combinedRoomData.forEach((roomData) => {
-    const { name, originOffset, points, fillColor, borderColor, labelOffset } =
-      roomData
+    const {
+      name,
+      originOffset,
+      points,
+      fillColor,
+      borderColor,
+      labelOffset,
+      monsters,
+      resources,
+      portal,
+      obelisk,
+    } = roomData
 
-    // Apply the origin offset to all points
     const adjustedPoints: [number, number][] = points.map(([x, y]) => [
       x + originOffset[0],
-      (y + originOffset[1]) * -1, // y increases downward instead of upward
+      (y + originOffset[1]) * -1,
     ])
 
-    // Calculate default label position (center of the room) if not provided
     const defaultLabelPosition = calculateCentroid(adjustedPoints)
     const labelPosition = labelOffset
       ? [
@@ -29,15 +35,31 @@ const generateRoomShapes = (
         ]
       : defaultLabelPosition
 
-    // Add the room elements to our collection
+    const labelX = labelPosition[0]
+    const labelY = labelPosition[1]
+    const labelZ = 0.1
+
+    // Build info lines with icons
+    const infoLines: string[] = []
+
+    if (monsters?.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
+    if (resources?.length)
+      infoLines.push(...resources.map((r) => `🪵 ${r.name}`))
+    if (portal) infoLines.push('🌀 Portal')
+    if (obelisk) infoLines.push('🗿 Obelisk')
+
+    // Estimate background size (very rough)
+    const bgWidth = 6
+    const bgHeight = 1 + infoLines.length * 0.6
+
     allRoomElements.push(
-      // Create the floor shape
+      // Floor
       <mesh key={`${name}-floor`}>
         <shapeGeometry args={[createShapePath(adjustedPoints)]} />
         <meshBasicMaterial color={fillColor} />
       </mesh>,
 
-      // Create the border/outline
+      // Border
       <line key={`${name}-border`}>
         <bufferGeometry attach="geometry">
           <float32BufferAttribute
@@ -45,24 +67,43 @@ const generateRoomShapes = (
             args={[createLinePoints(adjustedPoints), 3]}
           />
         </bufferGeometry>
-        <lineBasicMaterial
-          attach="material"
-          color={borderColor}
-          linewidth={1}
-        />
+        <lineBasicMaterial color={borderColor} linewidth={1} />
       </line>,
 
-      // Add the room label
-      <Text
-        key={`${name}-label`}
-        position={[labelPosition[0], labelPosition[1], 0.1]}
-        color="white"
-        fontSize={0.5}
-        anchorX="center"
-        anchorY="middle"
-      >
-        {name}
-      </Text>,
+      // Label group
+      <group key={`${name}-label-group`} position={[labelX, labelY, labelZ]}>
+        {/* Background */}
+        <mesh position={[0, -bgHeight / 2 + 0.25, -0.01]}>
+          <planeGeometry args={[bgWidth, bgHeight]} />
+          <meshBasicMaterial color="black" transparent opacity={0.6} />
+        </mesh>
+
+        {/* Room name */}
+        <Text
+          position={[0, 0, 0.01]}
+          fontSize={0.5}
+          color="white"
+          anchorX="center"
+          anchorY="top"
+          fontWeight="bold"
+        >
+          {name}
+        </Text>
+
+        {/* Info lines */}
+        {infoLines.map((line, index) => (
+          <Text
+            key={`${name}-info-${index}`}
+            position={[0, -(index + 1) * 0.6, 0.01]}
+            fontSize={0.4}
+            color="white"
+            anchorX="center"
+            anchorY="top"
+          >
+            {line}
+          </Text>
+        ))}
+      </group>,
     )
   })
 
