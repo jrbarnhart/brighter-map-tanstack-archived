@@ -10,7 +10,7 @@ export async function fetchMiscItems() {
         paths['/items/misc']['get']['responses']['200']['content']['application/json']
       >('/items/misc')
 
-    return { miscItems: miscItemsQuery.data }
+    return miscItemsQuery.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)
