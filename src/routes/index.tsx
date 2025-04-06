@@ -40,13 +40,6 @@ function App() {
         </label>
         <a
           href="#"
-          onMouseOver={() => lazyHandlers.enableQuestStepsData()}
-          className="bg-green-500 w-min whitespace-nowrap p-2 font-bold rounded-xl"
-        >
-          Quest Link
-        </a>
-        <a
-          href="#"
           onMouseOver={() => lazyHandlers.enableDropTablesData()}
           className="bg-blue-500 w-min whitespace-nowrap p-2 font-bold rounded-xl"
         >
@@ -90,10 +83,6 @@ function App() {
             : 'Not loaded'}
         </p>
         <p>Quests: {lazyData.quests ? lazyData.quests.length : 'Not loaded'}</p>
-        <p>
-          Quest Steps:{' '}
-          {lazyData.questSteps ? lazyData.questSteps.length : 'Not loaded'}
-        </p>
         <p>
           Drop Tables:{' '}
           {lazyData.dropTables ? lazyData.dropTables.length : 'Not loaded'}

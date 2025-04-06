@@ -4,7 +4,7 @@ import { dropTablesQueryOptions } from '@/queries/dropTables/dropTablesQueryOpti
 import { miscItemsQueryOptions } from '@/queries/miscItems/miscItemsQueryOptions'
 import { monsterVariantsQueryOptions } from '@/queries/monsterVariants/monsterVariantsQueryOptions'
 import { questsQueryOptions } from '@/queries/quests/questsQueryOptions'
-import { questStepsQueryOptions } from '@/queries/questSteps/questStepsQueryOptions'
+
 import { resourceVariantsQueryOptions } from '@/queries/resourceVariants/resourceVariantsQueryOptions'
 import { weaponVariantsQueryOptions } from '@/queries/weaponVariants/weaponVariantsQueryOptions'
 import { useQuery } from '@tanstack/react-query'
@@ -48,11 +48,6 @@ export default function useLazyQueries() {
   const [enableQuests, setEnableQuests] = useState(false)
   const { data: quests } = useQuery(questsQueryOptions(enableQuests))
 
-  const [enableQuestSteps, setEnableQuestSteps] = useState(false)
-  const { data: questSteps } = useQuery(
-    questStepsQueryOptions(enableQuestSteps),
-  )
-
   const enableSearchData = () => {
     setEnableMiscItems(true)
     setEnableArmorVariants(true)
@@ -67,10 +62,6 @@ export default function useLazyQueries() {
     setEnableDropTables(true)
   }
 
-  const enableQuestStepsData = () => {
-    setEnableQuestSteps(true)
-  }
-
   const data = {
     miscItems,
     armorVariants,
@@ -79,14 +70,12 @@ export default function useLazyQueries() {
     monsterVariants,
     resourceVariants,
     quests,
-    questSteps,
     dropTables,
   }
 
   const handlers = {
     enableSearchData,
     enableDropTablesData,
-    enableQuestStepsData,
   }
 
   return { data, handlers }
