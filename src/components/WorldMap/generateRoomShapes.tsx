@@ -1,15 +1,16 @@
 import * as THREE from 'three'
 import { Text } from '@react-three/drei'
+import type { CombinedRoomData } from './WorldMap'
 
 // Function to convert RoomRenderData to React Three Fiber elements
 const generateRoomShapes = (
-  roomRenderData: RoomRenderData,
+  combinedRoomData: CombinedRoomData[],
 ): React.ReactNode[] => {
   // Create an array to hold all room elements
   const allRoomElements: React.ReactNode[] = []
 
   // Process each room in the array
-  roomRenderData.forEach((roomData) => {
+  combinedRoomData.forEach((roomData) => {
     const { name, originOffset, points, fillColor, borderColor, labelOffset } =
       roomData
 
