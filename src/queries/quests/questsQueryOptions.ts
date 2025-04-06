@@ -1,12 +1,13 @@
 import { queryOptions } from '@tanstack/react-query'
 import { fetchQuests } from './quests'
+import queryConfig from '../queryConfig'
 
 export const questsKey = 'quests'
 
 export const questsQueryOptions = (enabled: boolean) =>
   queryOptions({
     queryKey: [questsKey],
-    staleTime: 1800000, // 30 min since data set is large and relatively unchanging
+    staleTime: queryConfig.staleTime,
     queryFn: () => fetchQuests(),
     enabled,
   })
