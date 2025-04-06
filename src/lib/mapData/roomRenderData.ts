@@ -1636,4 +1636,6 @@ const hopeportRoomData: RoomRenderData[] = [
   },
 ]
 
-export default [...hopeportRoomData]
+const roomRenderData = [...hopeportRoomData]
+
+export default roomRenderData
