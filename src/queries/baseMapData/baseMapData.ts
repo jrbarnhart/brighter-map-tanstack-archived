@@ -5,17 +5,16 @@ import type { paths } from '@/lib/types/apiTypes'
 export async function fetchBaseMapData() {
   // console.info('Fetching base map data...');
   try {
-    const roomsQuery =
+    const [roomsQuery, vendorsQuery] = await Promise.all([
       axiosClient.get<
         paths['/rooms']['get']['responses']['200']['content']['application/json']
-      >('/rooms')
-    const vendorsQuery =
+      >('/rooms'),
       axiosClient.get<
         paths['/npcs/vendors']['get']['responses']['200']['content']['application/json']
-      >('/npcs/vendors')
+      >('/npcs/vendors'),
+    ])
 
-    const response = await Promise.all([roomsQuery, vendorsQuery])
-    return { rooms: response[0].data, vendors: response[1].data }
+    return { rooms: roomsQuery.data, vendors: vendorsQuery.data }
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message)
