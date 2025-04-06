@@ -643,7 +643,7 @@ const hopeportRoomData: RoomRenderData = [
     borderColor: 'black',
   },
   {
-    name: 'Willhope Crossing',
+    name: 'Wilhope Crossing',
     originOffset: [14, 71],
     points: [
       [0, 0],
@@ -661,7 +661,7 @@ const hopeportRoomData: RoomRenderData = [
     borderColor: 'black',
   },
   {
-    name: 'Willhope Passage',
+    name: 'Wilhope Passage',
     originOffset: [27, 69],
     points: [
       [0, 0],
@@ -697,7 +697,7 @@ const hopeportRoomData: RoomRenderData = [
     borderColor: 'black',
   },
   {
-    name: "Thieve's Den",
+    name: "Thieves' Den",
     originOffset: [28, 58],
     points: [
       [0, 0],
