@@ -23,12 +23,10 @@ export default function WorldMap({ ...props }: WorldMapProps) {
   return (
     <div id="canvas-container" className="h-full w-full">
       <Canvas
-        camera={{ position: [0, 0, 20], fov: 50 }}
-        className="bg-stone-900"
-        gl={{ alpha: false }}
+        camera={{ position: [0, 0, 50], fov: 50 }}
+        className="bg-stone-800"
         frameloop="demand"
       >
-        <ambientLight intensity={0.5} />
         <Controls />
         {roomShapes}
         {labelShapes}
