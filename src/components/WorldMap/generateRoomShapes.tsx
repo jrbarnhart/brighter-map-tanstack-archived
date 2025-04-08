@@ -48,9 +48,9 @@ const generateRoomShapes = (
     if (portal) infoLines.push('🌀 Portal')
     if (obelisk) infoLines.push('🗿 Obelisk')
 
-    // Estimate background size (very rough)
-    const bgWidth = 6
-    const bgHeight = 1 + infoLines.length * 0.6
+    // Estimate background size
+    const bgWidth = 1 + roomData.name.length * 0.3
+    const bgHeight = 1.25 + infoLines.length * 0.6
 
     allRoomElements.push(
       // Floor
@@ -95,7 +95,7 @@ const generateRoomShapes = (
           <Text
             key={`${name}-info-${index}`}
             position={[0, -(index + 1) * 0.6, 0.01]}
-            fontSize={0.4}
+            fontSize={0.5}
             color="white"
             anchorX="center"
             anchorY="top"
