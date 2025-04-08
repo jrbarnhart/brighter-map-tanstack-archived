@@ -49,7 +49,10 @@ const generateRoomShapes = (
     if (obelisk) infoLines.push('🗿 Obelisk')
 
     // Estimate background size
-    const bgWidth = 1 + roomData.name.length * 0.3
+    const longestLineLength = [roomData.name, ...infoLines].reduce((a, b) => {
+      return a.length > b.length ? a : b
+    }).length
+    const bgWidth = 1 + longestLineLength * 0.3
     const bgHeight = 1.25 + infoLines.length * 0.6
 
     allRoomElements.push(
