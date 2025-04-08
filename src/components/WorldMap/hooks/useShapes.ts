@@ -1,8 +1,8 @@
 // This hook takes all rooms geometry data and returns the room shapes and the label shapes
 
 import { useMemo } from 'react'
-import type { CombinedRoomData } from '../WorldMap'
 import generateRoomShapes from '../generateRoomShapes'
+import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 
 type UseRoomShapeProps = {
   combinedRoomData: CombinedRoomData[]
