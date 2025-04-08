@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { Text } from '@react-three/drei'
-import type { CombinedRoomData } from './WorldMap'
+import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 
 // Function to convert RoomRenderData to React Three Fiber elements
 const generateRoomShapes = (
