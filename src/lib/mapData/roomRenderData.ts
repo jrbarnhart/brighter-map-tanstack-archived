@@ -563,7 +563,7 @@ const hopeportRoomData: RoomRenderData = [
     borderColor: 'black',
   },
   {
-    name: 'Enchantress Shop',
+    name: 'Abandoned Shop',
     originOffset: [46, 60],
     points: [
       [0, 0],
