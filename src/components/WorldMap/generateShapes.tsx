@@ -2,19 +2,16 @@ import * as THREE from 'three'
 import { Text } from '@react-three/drei'
 import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 
-// Function to convert RoomRenderData to React Three Fiber elements
-const generateRoomShapes = (
+export function generateLabels(
   combinedRoomData: CombinedRoomData[],
-): React.ReactNode[] => {
-  const allRoomElements: React.ReactNode[] = []
+): React.ReactNode[] {
+  const allLabelElements: React.ReactNode[] = []
 
-  combinedRoomData.forEach((roomData) => {
+  for (const roomData of combinedRoomData) {
     const {
       name,
       originOffset,
       points,
-      fillColor,
-      borderColor,
       labelOffset,
       monsters,
       resources,
@@ -24,14 +21,14 @@ const generateRoomShapes = (
 
     const adjustedPoints: [number, number][] = points.map(([x, y]) => [
       x + originOffset[0],
-      (y + originOffset[1]) * -1,
+      (y + originOffset[1]) * -1, // Y axis increases in downward direction
     ])
 
     const defaultLabelPosition = calculateCentroid(adjustedPoints)
     const labelPosition = labelOffset
       ? [
           originOffset[0] + labelOffset[0],
-          (originOffset[1] + labelOffset[1]) * -1,
+          (originOffset[1] + labelOffset[1]) * -1, // Y axis increases in downward direction
         ]
       : defaultLabelPosition
 
@@ -55,24 +52,7 @@ const generateRoomShapes = (
     const bgWidth = 1 + longestLineLength * 0.3
     const bgHeight = 1.25 + infoLines.length * 0.6
 
-    allRoomElements.push(
-      // Floor
-      <mesh key={`${name}-floor`}>
-        <shapeGeometry args={[createShapePath(adjustedPoints)]} />
-        <meshBasicMaterial color={fillColor} />
-      </mesh>,
-
-      // Border
-      <line key={`${name}-border`}>
-        <bufferGeometry attach="geometry">
-          <float32BufferAttribute
-            attach="attributes-position"
-            args={[createLinePoints(adjustedPoints), 3]}
-          />
-        </bufferGeometry>
-        <lineBasicMaterial color={borderColor} linewidth={1} />
-      </line>,
-
+    allLabelElements.push(
       // Label group
       <group key={`${name}-label-group`} position={[labelX, labelY, labelZ]}>
         {/* Background */}
@@ -107,6 +87,42 @@ const generateRoomShapes = (
           </Text>
         ))}
       </group>,
+    )
+  }
+
+  return allLabelElements
+}
+
+export function generateRoomShapes(
+  combinedRoomData: CombinedRoomData[],
+): React.ReactNode[] {
+  const allRoomElements: React.ReactNode[] = []
+
+  combinedRoomData.forEach((roomData) => {
+    const { name, originOffset, points, fillColor, borderColor } = roomData
+
+    const adjustedPoints: [number, number][] = points.map(([x, y]) => [
+      x + originOffset[0],
+      (y + originOffset[1]) * -1, // Y axis increases in downward direction
+    ])
+
+    allRoomElements.push(
+      // Floor
+      <mesh key={`${name}-floor`}>
+        <shapeGeometry args={[createShapePath(adjustedPoints)]} />
+        <meshBasicMaterial color={fillColor} />
+      </mesh>,
+
+      // Border
+      <line key={`${name}-border`}>
+        <bufferGeometry attach="geometry">
+          <float32BufferAttribute
+            attach="attributes-position"
+            args={[createLinePoints(adjustedPoints), 3]}
+          />
+        </bufferGeometry>
+        <lineBasicMaterial color={borderColor} linewidth={1} />
+      </line>,
     )
   })
 
@@ -162,5 +178,3 @@ const calculateCentroid = (points: [number, number][]): [number, number] => {
 
   return [sumX / points.length, sumY / points.length]
 }
-
-export default generateRoomShapes
