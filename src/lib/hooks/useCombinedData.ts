@@ -43,6 +43,7 @@ export default function useCombinedData({ ...props }: UseCombinedDataProps) {
         npcs: [],
         obelisk: false,
         portal: false,
+        rift: false,
         questSteps: [],
         region: { id: -100, name: 'ERROR' },
         regionId: -100,
