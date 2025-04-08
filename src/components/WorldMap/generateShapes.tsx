@@ -17,6 +17,7 @@ export function generateLabels(
       resources,
       portal,
       obelisk,
+      rift,
     } = roomData
 
     const adjustedPoints: [number, number][] = points.map(([x, y]) => [
@@ -42,8 +43,9 @@ export function generateLabels(
     if (monsters?.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
     if (resources?.length)
       infoLines.push(...resources.map((r) => `🪵 ${r.name}`))
-    if (portal) infoLines.push('🌀 Portal')
+    if (portal) infoLines.push('🌐 Portal')
     if (obelisk) infoLines.push('🗿 Obelisk')
+    if (rift) infoLines.push('🌀 Storage')
 
     // Estimate background size
     const longestLineLength = [roomData.name, ...infoLines].reduce((a, b) => {
