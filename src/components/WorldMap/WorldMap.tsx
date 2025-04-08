@@ -2,9 +2,9 @@ import { Canvas, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import roomRenderData from '@/lib/mapData/roomRenderData'
 import { useMemo } from 'react'
-import generateRoomShapes from './generateRoomShapes'
 import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
 import type { components } from '@/lib/types/apiTypes'
+import useShapes from './hooks/useShapes'
 
 type WorldMapProps = {
   baseMapData: BaseMapData
@@ -60,9 +60,7 @@ export default function WorldMap({ ...props }: WorldMapProps) {
   }, [])
 
   // Create the room shapes using combined data
-  const shapes = useMemo(() => {
-    return generateRoomShapes(combinedRoomData)
-  }, [])
+  const { roomShapes } = useShapes({ combinedRoomData })
 
   return (
     <div id="canvas-container" className="h-full w-full">
@@ -74,7 +72,7 @@ export default function WorldMap({ ...props }: WorldMapProps) {
       >
         <ambientLight intensity={0.5} />
         <Controls />
-        {shapes}
+        {roomShapes}
       </Canvas>
     </div>
   )
