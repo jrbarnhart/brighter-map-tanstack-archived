@@ -1438,6 +1438,7 @@ export interface components {
             regionId: number;
             portal: boolean;
             obelisk: boolean;
+            rift: boolean;
         };
         CombatSkillBaseEntity: {
             id: number;
@@ -1501,6 +1502,7 @@ export interface components {
             regionId: number;
             portal: boolean;
             obelisk: boolean;
+            rift: boolean;
             craftingSkillIds?: number[];
             monsterIds?: number[];
             npcIds?: number[];
@@ -1534,6 +1536,7 @@ export interface components {
             regionId: number;
             portal: boolean;
             obelisk: boolean;
+            rift: boolean;
             craftingSkills: components["schemas"]["CraftingSkillBaseEntity"][];
             monsters: components["schemas"]["MonsterBaseEntity"][];
             npcs: components["schemas"]["NpcBaseEntity"][];
@@ -1547,6 +1550,7 @@ export interface components {
             regionId?: number;
             portal?: boolean;
             obelisk?: boolean;
+            rift?: boolean;
             craftingSkillIds?: number[];
             monsterIds?: number[];
             npcIds?: number[];
@@ -1824,6 +1828,7 @@ export interface components {
         };
         VendorBaseEntity: {
             id: number;
+            name?: string | null;
             npcId: number;
         };
         DropTableBaseEntity: {
@@ -2199,6 +2204,7 @@ export interface components {
             passive?: boolean;
         };
         CreateVendorDto: {
+            name?: string | null;
             npcId: number;
             resourceVariantIds?: number[];
             weaponVariantIds?: number[];
@@ -2208,6 +2214,7 @@ export interface components {
         };
         VendorEntity: {
             id: number;
+            name?: string | null;
             npc: components["schemas"]["NpcBaseEntity"];
             npcId: number;
             resourceVariants: components["schemas"]["ResourceVariantBaseEntity"][];
@@ -2217,6 +2224,7 @@ export interface components {
             miscItems: components["schemas"]["MiscItemBaseEntity"][];
         };
         UpdateVendorDto: {
+            name?: string | null;
             npcId?: number;
             resourceVariantIds?: number[];
             weaponVariantIds?: number[];
