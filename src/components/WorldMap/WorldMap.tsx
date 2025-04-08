@@ -18,7 +18,7 @@ export default function WorldMap({ ...props }: WorldMapProps) {
 
   const combinedRoomData = useCombinedData({ baseMapData })
 
-  const { roomShapes } = useShapes({ combinedRoomData })
+  const { roomShapes, labelShapes } = useShapes({ combinedRoomData })
 
   return (
     <div id="canvas-container" className="h-full w-full">
@@ -31,6 +31,7 @@ export default function WorldMap({ ...props }: WorldMapProps) {
         <ambientLight intensity={0.5} />
         <Controls />
         {roomShapes}
+        {labelShapes}
       </Canvas>
     </div>
   )
