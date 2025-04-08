@@ -6,7 +6,7 @@ export function generateLabels(
   combinedRoomData: CombinedRoomData[],
 ): React.ReactNode[] {
   const allLabelElements: React.ReactNode[] = []
-
+  console.info('Generating labels...')
   for (const roomData of combinedRoomData) {
     const {
       name,
@@ -97,7 +97,7 @@ export function generateRoomShapes(
   combinedRoomData: CombinedRoomData[],
 ): React.ReactNode[] {
   const allRoomElements: React.ReactNode[] = []
-
+  console.info('Generating labels...')
   combinedRoomData.forEach((roomData) => {
     const { name, originOffset, points, fillColor, borderColor } = roomData
 
