@@ -1,8 +1,9 @@
 import { Canvas, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
-import useShapes from './hooks/useShapes'
 import useCombinedData from '@/lib/hooks/useCombinedData'
+import RoomShape from './components/RoomShape'
+import RoomLabel from './components/RoomLabel'
 
 type WorldMapProps = {
   baseMapData: BaseMapData
@@ -18,8 +19,6 @@ export default function WorldMap({ ...props }: WorldMapProps) {
 
   const combinedRoomData = useCombinedData({ baseMapData })
 
-  const { roomShapes, labelShapes } = useShapes({ combinedRoomData })
-
   return (
     <div id="canvas-container" className="h-full w-full">
       <Canvas
@@ -28,8 +27,12 @@ export default function WorldMap({ ...props }: WorldMapProps) {
         frameloop="demand"
       >
         <Controls />
-        {roomShapes}
-        {labelShapes}
+        {combinedRoomData.map((roomData) => (
+          <>
+            <RoomShape roomData={roomData} />
+            <RoomLabel roomData={roomData} />
+          </>
+        ))}
       </Canvas>
     </div>
   )
