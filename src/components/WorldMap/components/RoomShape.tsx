@@ -1,0 +1,39 @@
+import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
+import { createLinePoints, createShapePath } from '../generateShapes'
+import { useMemo } from 'react'
+
+type RoomShapeProps = {
+  roomData: CombinedRoomData
+}
+
+export default function RoomShape({ ...props }: RoomShapeProps) {
+  const { roomData } = props
+  const { name, originOffset, points, fillColor, borderColor, id } = roomData
+
+  const adjustedPoints: [number, number][] = useMemo(() => {
+    return points.map(([x, y]) => [
+      x + originOffset[0],
+      (y + originOffset[1]) * -1, // Y axis increases in downward direction
+    ])
+  }, [points, originOffset])
+
+  return (
+    <>
+      {/* Draw the floor */}
+      <mesh key={`${name}-${id}-floor`}>
+        <shapeGeometry args={[createShapePath(adjustedPoints)]} />
+        <meshBasicMaterial color={fillColor} />
+      </mesh>
+      {/* Draw the border */}
+      <line key={`${name}-${id}-border`}>
+        <bufferGeometry attach="geometry">
+          <float32BufferAttribute
+            attach="attributes-position"
+            args={[createLinePoints(adjustedPoints), 3]}
+          />
+        </bufferGeometry>
+        <lineBasicMaterial color={borderColor} linewidth={1} />
+      </line>
+    </>
+  )
+}

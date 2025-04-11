@@ -10,6 +10,7 @@ export function generateLabels(
   for (const roomData of combinedRoomData) {
     const {
       name,
+      id,
       originOffset,
       points,
       labelOffset,
@@ -56,7 +57,10 @@ export function generateLabels(
 
     allLabelElements.push(
       // Label group
-      <group key={`${name}-label-group`} position={[labelX, labelY, labelZ]}>
+      <group
+        key={`${name}-${id}-label-group`}
+        position={[labelX, labelY, labelZ]}
+      >
         {/* Background */}
         <mesh position={[0, -bgHeight / 2 + 0.25, -0.01]}>
           <planeGeometry args={[bgWidth, bgHeight]} />
@@ -78,7 +82,7 @@ export function generateLabels(
         {/* Info lines */}
         {infoLines.map((line, index) => (
           <Text
-            key={`${name}-info-${index}`}
+            key={`${name}-${id}-info-${index}`}
             position={[0, -(index + 1) * 0.6, 0.01]}
             fontSize={0.5}
             color="white"
@@ -99,9 +103,9 @@ export function generateRoomShapes(
   combinedRoomData: CombinedRoomData[],
 ): React.ReactNode[] {
   const allRoomElements: React.ReactNode[] = []
-  console.info('Generating labels...')
+  console.info('Generating room shapes...')
   combinedRoomData.forEach((roomData) => {
-    const { name, originOffset, points, fillColor, borderColor } = roomData
+    const { name, originOffset, points, fillColor, borderColor, id } = roomData
 
     const adjustedPoints: [number, number][] = points.map(([x, y]) => [
       x + originOffset[0],
@@ -110,13 +114,13 @@ export function generateRoomShapes(
 
     allRoomElements.push(
       // Floor
-      <mesh key={`${name}-floor`}>
+      <mesh key={`${name}-${id}-floor`}>
         <shapeGeometry args={[createShapePath(adjustedPoints)]} />
         <meshBasicMaterial color={fillColor} />
       </mesh>,
 
       // Border
-      <line key={`${name}-border`}>
+      <line key={`${name}-${id}-border`}>
         <bufferGeometry attach="geometry">
           <float32BufferAttribute
             attach="attributes-position"
@@ -180,3 +184,5 @@ const calculateCentroid = (points: [number, number][]): [number, number] => {
 
   return [sumX / points.length, sumY / points.length]
 }
+
+export { createShapePath, createLinePoints, calculateCentroid }
