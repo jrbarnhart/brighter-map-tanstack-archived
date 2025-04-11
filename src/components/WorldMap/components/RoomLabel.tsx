@@ -1,6 +1,6 @@
 import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 import { useMemo } from 'react'
-import { calculateCentroid } from '../generateShapes'
+import { calculateCentroid } from '../geometryHelpers'
 import { Text } from '@react-three/drei'
 
 type RoomLabelProps = {
