@@ -108,10 +108,10 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
         {infoLines.map((line, index) => (
           <Text
             key={`${name}-${id}-info-${index}`}
-            position={[0, -(index + 1) * 0.6, 0.01]}
+            position={[-bgWidth / 2 + 0.2, -(index + 1) * 0.6, 0.01]}
             fontSize={0.5}
             color="white"
-            anchorX="center"
+            anchorX="left"
             anchorY="top"
           >
             {line}
