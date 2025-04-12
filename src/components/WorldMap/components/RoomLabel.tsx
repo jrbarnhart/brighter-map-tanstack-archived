@@ -34,7 +34,7 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
     [adjustedPoints],
   )
 
-  const labelPosition = useMemo(
+  const labelPosition: [number, number] = useMemo(
     () =>
       labelOffset
         ? [
