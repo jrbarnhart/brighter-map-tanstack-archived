@@ -2,6 +2,7 @@ import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 import { useMemo } from 'react'
 import { calculateCentroid } from '../geometryHelpers'
 import { Text } from '@react-three/drei'
+import InfoLines from './InfoLines'
 
 type RoomLabelProps = {
   roomData: CombinedRoomData
@@ -86,12 +87,7 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
         key={`${name}-${id}-label-group`}
         position={[labelX, labelY, labelZ]}
       >
-        {/* Background */}
-        <mesh position={[0, -bgHeight / 2 + 0.25, -0.01]}>
-          <planeGeometry args={[bgWidth, bgHeight]} />
-          <meshBasicMaterial color="black" transparent opacity={0.6} />
-        </mesh>
-
+        {/* Title Background */}
         {/* Room name */}
         <Text
           position={[0, 0, 0.01]}
@@ -103,20 +99,7 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
         >
           {name}
         </Text>
-
-        {/* Info lines */}
-        {infoLines.map((line, index) => (
-          <Text
-            key={`${name}-${id}-info-${index}`}
-            position={[-bgWidth / 2 + 0.2, -(index + 1) * 0.6, 0.01]}
-            fontSize={0.5}
-            color="white"
-            anchorX="left"
-            anchorY="top"
-          >
-            {line}
-          </Text>
-        ))}
+        <InfoLines roomData={roomData} />
       </group>
     </>
   )
