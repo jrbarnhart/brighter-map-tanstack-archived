@@ -4,6 +4,7 @@ import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
 import useCombinedData from '@/lib/hooks/useCombinedData'
 import RoomShape from './components/RoomShape'
 import RoomLabel from './components/RoomLabel'
+import React from 'react'
 
 type WorldMapProps = {
   baseMapData: BaseMapData
@@ -28,10 +29,10 @@ export default function WorldMap({ ...props }: WorldMapProps) {
       >
         <Controls />
         {combinedRoomData.map((roomData) => (
-          <>
+          <React.Fragment key={`${roomData.name}-${roomData.id}`}>
             <RoomShape roomData={roomData} />
             <RoomLabel roomData={roomData} />
-          </>
+          </React.Fragment>
         ))}
       </Canvas>
     </div>
