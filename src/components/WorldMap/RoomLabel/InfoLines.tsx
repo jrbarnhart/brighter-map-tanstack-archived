@@ -86,6 +86,7 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
       <Text
         position={[-bgDimensions.width / 2 + PADDING_X, OFFSET_Y, TEXT_Z]}
         fontSize={FONT_HEIGHT}
+        fontWeight={'bold'}
         color="white"
         anchorX="left"
         anchorY="top"
