@@ -77,7 +77,7 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
         ]}
       >
         <planeGeometry args={[bgDimensions.width, bgDimensions.height]} />
-        <meshBasicMaterial color="black" transparent opacity={0.8} />
+        <meshBasicMaterial color="black" opacity={1} />
       </mesh>
       {/* Info lines */}
       <Text

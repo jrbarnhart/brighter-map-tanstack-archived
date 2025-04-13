@@ -40,7 +40,7 @@ export default function RoomTitle({ name }: RoomTitleProps) {
       {/* Title Background */}
       <mesh position={[0, -bgDimensions.height / 2 + OFFSET_Y, BG_Z]}>
         <planeGeometry args={[bgDimensions.width, bgDimensions.height]} />
-        <meshBasicMaterial color="white" transparent opacity={0.8} />
+        <meshBasicMaterial color="white" opacity={1} />
       </mesh>
       {/* Room name */}
       <Text
