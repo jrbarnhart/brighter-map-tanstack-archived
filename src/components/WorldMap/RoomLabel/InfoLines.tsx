@@ -11,7 +11,7 @@ type InfoLinesProps = {
 
 export default function InfoLines({ roomData }: InfoLinesProps) {
   // Config Constants
-  const OFFSET_Y = -0.65
+  const OFFSET_Y = -0.7
   const BG_Z = -0.01
   const TEXT_Z = 0.01
   const FONT_HEIGHT = 0.5
@@ -46,7 +46,7 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
 
     const textHeight =
       infoLines.length * FONT_HEIGHT +
-      (infoLines.length > 0 ? (infoLines.length - 1) * LINE_SPACING : 0)
+      (infoLines.length > 0 ? infoLines.length * LINE_SPACING : 0)
     const paddingVertical = PADDING_Y * 2 // Top and bottom padding
     const height = textHeight + paddingVertical
 
@@ -71,7 +71,7 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
         position={[
           0,
           -bgDimensions.height / 2 +
-            OFFSET_Y +
+            OFFSET_Y / 2 +
             infoLines.length * LINE_OFFSET_MOD,
           BG_Z,
         ]}
