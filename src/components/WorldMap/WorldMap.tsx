@@ -2,7 +2,7 @@ import { Canvas, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import React from 'react'
 import RoomShape from './components/RoomShape'
-import RoomLabel from './components/RoomLabel'
+import RoomLabel from './RoomLabel/RoomLabel'
 import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
 import useCombinedData from '@/lib/hooks/useCombinedData'
 
