@@ -43,6 +43,9 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
     [longestLineLength],
   )
 
+  // Don't return anything if there aren't any info lines
+  if (infoLines.length === 0) return null
+
   // Return the info lines
   return (
     <>
