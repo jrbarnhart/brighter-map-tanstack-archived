@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { Text } from '@react-three/drei'
 import { calculateCentroid } from '../geometryHelpers'
 import InfoLines from './InfoLines'
+import RoomTitle from './RoomTitle'
 import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 
 type RoomLabelProps = {
@@ -45,18 +45,7 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
         key={`${name}-${id}-label-group`}
         position={[labelX, labelY, labelZ]}
       >
-        {/* Title Background */}
-        {/* Room name */}
-        <Text
-          position={[0, 0, 0.01]}
-          fontSize={0.5}
-          color="white"
-          anchorX="center"
-          anchorY="top"
-          fontWeight="bold"
-        >
-          {name}
-        </Text>
+        <RoomTitle name={name} />
         <InfoLines roomData={roomData} />
       </group>
     </>
