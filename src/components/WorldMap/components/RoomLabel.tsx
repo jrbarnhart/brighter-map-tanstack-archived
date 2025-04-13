@@ -1,8 +1,8 @@
-import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 import { useMemo } from 'react'
-import { calculateCentroid } from '../geometryHelpers'
 import { Text } from '@react-three/drei'
+import { calculateCentroid } from '../geometryHelpers'
 import InfoLines from './InfoLines'
+import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 
 type RoomLabelProps = {
   roomData: CombinedRoomData
@@ -23,7 +23,7 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
   } = roomData
 
   // Calculate lable position
-  const adjustedPoints: [number, number][] = useMemo(() => {
+  const adjustedPoints: Array<[number, number]> = useMemo(() => {
     return points.map(([x, y]) => [
       x + originOffset[0],
       (y + originOffset[1]) * -1, // Y axis increases in downward direction
@@ -52,10 +52,10 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
 
   // Construct label info lines
   const infoLines = useMemo(() => {
-    const infoLines: string[] = []
+    const infoLines: Array<string> = []
 
-    if (monsters?.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
-    if (resources?.length)
+    if (monsters.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
+    if (resources.length)
       infoLines.push(...resources.map((r) => `🪵 ${r.name}`))
     if (portal) infoLines.push('🌐 Portal')
     if (obelisk) infoLines.push('🗿 Obelisk')

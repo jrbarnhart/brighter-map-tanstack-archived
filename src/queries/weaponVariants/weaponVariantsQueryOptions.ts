@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchWeaponVariants } from './weaponVariants'
 import queryConfig from '../queryConfig'
+import { fetchWeaponVariants } from './weaponVariants'
 
 export const weaponVariantsKey = 'weapon-variants'
 

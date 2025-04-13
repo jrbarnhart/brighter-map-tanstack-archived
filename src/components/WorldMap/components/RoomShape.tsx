@@ -1,6 +1,6 @@
-import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
-import { createLinePoints, createShapePath } from '../geometryHelpers'
 import { useMemo } from 'react'
+import { createLinePoints, createShapePath } from '../geometryHelpers'
+import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 
 type RoomShapeProps = {
   roomData: CombinedRoomData
@@ -10,7 +10,7 @@ export default function RoomShape({ ...props }: RoomShapeProps) {
   const { roomData } = props
   const { name, originOffset, points, fillColor, borderColor, id } = roomData
 
-  const adjustedPoints: [number, number][] = useMemo(() => {
+  const adjustedPoints: Array<[number, number]> = useMemo(() => {
     return points.map(([x, y]) => [
       x + originOffset[0],
       (y + originOffset[1]) * -1, // Y axis increases in downward direction

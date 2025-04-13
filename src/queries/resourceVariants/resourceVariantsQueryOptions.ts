@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchResourceVariants } from './resourceVariants'
 import queryConfig from '../queryConfig'
+import { fetchResourceVariants } from './resourceVariants'
 
 export const resourceVariantsKey = 'resource-variants'
 

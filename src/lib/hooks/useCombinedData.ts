@@ -1,9 +1,9 @@
 // This hook combines data from this project with data from the api for easier use and room name matching
 
-import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
-import roomRenderData from '../mapData/roomRenderData'
-import type { components } from '../types/apiTypes'
 import { useMemo } from 'react'
+import roomRenderData from '../mapData/roomRenderData'
+import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
+import type { components } from '../types/apiTypes'
 
 export type CombinedRoomData = RoomRenderData[number] &
   components['schemas']['RoomEntity']

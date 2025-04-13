@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { baseMapDataQueryOptions } from '@/queries/baseMapData/baseMapDataQueryOptions'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { baseMapDataQueryOptions } from '@/queries/baseMapData/baseMapDataQueryOptions'
 
 import useLazyQueries from '@/lib/hooks/useLazyQueries'
 import WorldMap from '@/components/WorldMap/WorldMap'

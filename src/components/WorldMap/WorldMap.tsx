@@ -1,10 +1,10 @@
 import { Canvas, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
-import useCombinedData from '@/lib/hooks/useCombinedData'
+import React from 'react'
 import RoomShape from './components/RoomShape'
 import RoomLabel from './components/RoomLabel'
-import React from 'react'
+import type { BaseMapData } from '@/queries/baseMapData/baseMapData'
+import useCombinedData from '@/lib/hooks/useCombinedData'
 
 type WorldMapProps = {
   baseMapData: BaseMapData

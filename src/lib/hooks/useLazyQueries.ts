@@ -1,3 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
 import { armorVariantsQueryOptions } from '@/queries/armorVariants/armorVariantsQueryOptions'
 import { consumableVariantsQueryOptions } from '@/queries/consumableVariants/consumableVariantsQueryOptions'
 import { dropTablesQueryOptions } from '@/queries/dropTables/dropTablesQueryOptions'
@@ -7,8 +9,6 @@ import { questsQueryOptions } from '@/queries/quests/questsQueryOptions'
 
 import { resourceVariantsQueryOptions } from '@/queries/resourceVariants/resourceVariantsQueryOptions'
 import { weaponVariantsQueryOptions } from '@/queries/weaponVariants/weaponVariantsQueryOptions'
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
 
 export default function useLazyQueries() {
   const [enableMiscItems, setEnableMiscItems] = useState(false)

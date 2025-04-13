@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchConsumableVariants } from './consumableVariants'
 import queryConfig from '../queryConfig'
+import { fetchConsumableVariants } from './consumableVariants'
 
 export const consumableVariantsKey = 'consumable-variants'
 

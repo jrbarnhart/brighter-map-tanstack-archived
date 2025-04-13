@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
 // Helper function to create a Three.js Shape from points
-const createShapePath = (points: [number, number][]) => {
+const createShapePath = (points: Array<[number, number]>) => {
   const shape = new THREE.Shape()
 
   if (points.length < 3) return shape
@@ -19,8 +19,8 @@ const createShapePath = (points: [number, number][]) => {
 }
 
 // Helper function to create line points for the border
-const createLinePoints = (points: [number, number][]) => {
-  const linePoints: number[] = []
+const createLinePoints = (points: Array<[number, number]>) => {
+  const linePoints: Array<number> = []
 
   // Add each point as x, y, z coordinates
   points.forEach((point) => {
@@ -36,7 +36,7 @@ const createLinePoints = (points: [number, number][]) => {
 }
 
 // Helper function to calculate the centroid of a polygon
-const calculateCentroid = (points: [number, number][]): [number, number] => {
+const calculateCentroid = (points: Array<[number, number]>): [number, number] => {
   if (points.length === 0) return [0, 0]
 
   let sumX = 0

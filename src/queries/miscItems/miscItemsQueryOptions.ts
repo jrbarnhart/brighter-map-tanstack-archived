@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchMiscItems } from './miscItems'
 import queryConfig from '../queryConfig'
+import { fetchMiscItems } from './miscItems'
 
 export const miscItemsKey = 'misc-items'
 

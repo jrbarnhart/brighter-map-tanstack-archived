@@ -1432,7 +1432,7 @@ export interface components {
         };
         RoomBaseEntity: {
             /** @description The array of types of bank in this room */
-            banks: ("BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER")[];
+            banks: Array<"BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER">;
             id: number;
             name: string;
             regionId: number;
@@ -1485,29 +1485,29 @@ export interface components {
         RegionEntity: {
             id: number;
             name: string;
-            rooms: components["schemas"]["RoomBaseEntity"][];
-            combatSkills: components["schemas"]["CombatSkillBaseEntity"][];
-            gatheringSkills: components["schemas"]["GatheringSkillBaseEntity"][];
-            craftingSkills: components["schemas"]["CraftingSkillBaseEntity"][];
-            monsters: components["schemas"]["MonsterBaseEntity"][];
-            quests: components["schemas"]["QuestBaseEntity"][];
+            rooms: Array<components["schemas"]["RoomBaseEntity"]>;
+            combatSkills: Array<components["schemas"]["CombatSkillBaseEntity"]>;
+            gatheringSkills: Array<components["schemas"]["GatheringSkillBaseEntity"]>;
+            craftingSkills: Array<components["schemas"]["CraftingSkillBaseEntity"]>;
+            monsters: Array<components["schemas"]["MonsterBaseEntity"]>;
+            quests: Array<components["schemas"]["QuestBaseEntity"]>;
         };
         UpdateRegionDto: {
             name?: string;
         };
         CreateRoomDto: {
             /** @description The array of types of bank in this room */
-            banks?: ("BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER")[];
+            banks?: Array<"BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER">;
             name: string;
             regionId: number;
             portal: boolean;
             obelisk: boolean;
             rift: boolean;
-            craftingSkillIds?: number[];
-            monsterIds?: number[];
-            npcIds?: number[];
-            resourceIds?: number[];
-            questStepIds?: number[];
+            craftingSkillIds?: Array<number>;
+            monsterIds?: Array<number>;
+            npcIds?: Array<number>;
+            resourceIds?: Array<number>;
+            questStepIds?: Array<number>;
         };
         NpcBaseEntity: {
             id: number;
@@ -1529,7 +1529,7 @@ export interface components {
         };
         RoomEntity: {
             /** @description The array of types of bank in this room */
-            banks: ("BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER")[];
+            banks: Array<"BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER">;
             id: number;
             name: string;
             region: components["schemas"]["RegionBaseEntity"];
@@ -1537,30 +1537,30 @@ export interface components {
             portal: boolean;
             obelisk: boolean;
             rift: boolean;
-            craftingSkills: components["schemas"]["CraftingSkillBaseEntity"][];
-            monsters: components["schemas"]["MonsterBaseEntity"][];
-            npcs: components["schemas"]["NpcBaseEntity"][];
-            resources: components["schemas"]["ResourceBaseEntity"][];
-            questSteps: components["schemas"]["QuestStepBaseEntity"][];
+            craftingSkills: Array<components["schemas"]["CraftingSkillBaseEntity"]>;
+            monsters: Array<components["schemas"]["MonsterBaseEntity"]>;
+            npcs: Array<components["schemas"]["NpcBaseEntity"]>;
+            resources: Array<components["schemas"]["ResourceBaseEntity"]>;
+            questSteps: Array<components["schemas"]["QuestStepBaseEntity"]>;
         };
         UpdateRoomDto: {
             /** @description The array of types of bank in this room */
-            banks?: ("BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER")[];
+            banks?: Array<"BONES" | "BUILDING" | "CAPES" | "EXPLOSIVES" | "BAIT" | "HIDES" | "INGREDIENTS" | "LEATHERS" | "LUMBER" | "MONUMENT" | "ORE" | "REAGENTS" | "POTIONS" | "QUARTERMASTER" | "STONE" | "TIMBER">;
             name?: string;
             regionId?: number;
             portal?: boolean;
             obelisk?: boolean;
             rift?: boolean;
-            craftingSkillIds?: number[];
-            monsterIds?: number[];
-            npcIds?: number[];
-            resourceIds?: number[];
-            questStepIds?: number[];
-            removeCraftingSkillIds?: number[];
-            removeMonsterIds?: number[];
-            removeNpcIds?: number[];
-            removeResourceIds?: number[];
-            removeQuestStepIds?: number[];
+            craftingSkillIds?: Array<number>;
+            monsterIds?: Array<number>;
+            npcIds?: Array<number>;
+            resourceIds?: Array<number>;
+            questStepIds?: Array<number>;
+            removeCraftingSkillIds?: Array<number>;
+            removeMonsterIds?: Array<number>;
+            removeNpcIds?: Array<number>;
+            removeResourceIds?: Array<number>;
+            removeQuestStepIds?: Array<number>;
         };
         CreateGatheringSkillRequirementDto: {
             skillId: number;
@@ -1580,8 +1580,8 @@ export interface components {
             name: string;
             region: components["schemas"]["RegionBaseEntity"];
             regionId: number;
-            requirements: components["schemas"]["GatheringSkillRequirementBaseEntity"][];
-            resources: components["schemas"]["ResourceBaseEntity"][];
+            requirements: Array<components["schemas"]["GatheringSkillRequirementBaseEntity"]>;
+            resources: Array<components["schemas"]["ResourceBaseEntity"]>;
         };
         ResourceVariantBaseWithResourceEntity: {
             id: number;
@@ -1649,8 +1649,8 @@ export interface components {
         };
         CreateCraftingRecipeDto: {
             name: string;
-            inputResourceVariantIds?: number[];
-            inputItemIds?: number[];
+            inputResourceVariantIds?: Array<number>;
+            inputItemIds?: Array<number>;
             outputConsumableVariantId?: number | null;
             outputWeaponVariantId?: number | null;
             outputArmorVariantId?: number | null;
@@ -1724,8 +1724,8 @@ export interface components {
             id: number;
             name: string;
             requirement?: components["schemas"]["CraftingSkillRequirementBaseWithSkillEntity"];
-            inputResourceVariants: components["schemas"]["ResourceVariantBaseWithResourceEntity"][];
-            inputItems: components["schemas"]["MiscItemBaseEntity"][];
+            inputResourceVariants: Array<components["schemas"]["ResourceVariantBaseWithResourceEntity"]>;
+            inputItems: Array<components["schemas"]["MiscItemBaseEntity"]>;
             outputConsumableVariant?: components["schemas"]["ConsumableVariantBaseWithConsumableEntity"];
             outputConsumableVariantId: number | null;
             outputWeaponVariant?: components["schemas"]["WeaponVariantBaseWithWeaponEntity"];
@@ -1735,10 +1735,10 @@ export interface components {
         };
         UpdateCraftingRecipeDto: {
             name?: string;
-            inputResourceVariantIds?: number[];
-            removeInputResourceVariantIds?: number[];
-            inputItemIds?: number[];
-            removeInputItemIds?: number[];
+            inputResourceVariantIds?: Array<number>;
+            removeInputResourceVariantIds?: Array<number>;
+            inputItemIds?: Array<number>;
+            removeInputItemIds?: Array<number>;
             outputConsumableVariantId?: number | null;
             outputWeaponVariantId?: number | null;
             outputArmorVariantId?: number | null;
@@ -1752,9 +1752,9 @@ export interface components {
             name: string;
             region: components["schemas"]["RegionBaseEntity"];
             regionId: number;
-            requirements: components["schemas"]["CraftingSkillRequirementBaseEntity"][];
-            rooms: components["schemas"]["RoomBaseEntity"][];
-            consumables: components["schemas"]["ConsumableBaseEntity"][];
+            requirements: Array<components["schemas"]["CraftingSkillRequirementBaseEntity"]>;
+            rooms: Array<components["schemas"]["RoomBaseEntity"]>;
+            consumables: Array<components["schemas"]["ConsumableBaseEntity"]>;
         };
         UpdateCraftingSkillDto: {
             name?: string;
@@ -1803,8 +1803,8 @@ export interface components {
             name: string;
             region: components["schemas"]["RegionBaseEntity"];
             regionId: number;
-            requirements: components["schemas"]["CombatSkillRequirementBaseEntity"][];
-            monsters: components["schemas"]["MonsterBaseEntity"][];
+            requirements: Array<components["schemas"]["CombatSkillRequirementBaseEntity"]>;
+            monsters: Array<components["schemas"]["MonsterBaseEntity"]>;
         };
         UpdateCombatSkillDto: {
             name?: string;
@@ -1842,9 +1842,9 @@ export interface components {
             resource: components["schemas"]["ResourceBaseWithSkillEntity"];
             resourceId: number;
             requirement?: components["schemas"]["GatheringSkillRequirementBaseEntity"];
-            inRecipes: components["schemas"]["CraftingRecipeBaseEntity"][];
-            vendors: components["schemas"]["VendorBaseEntity"][];
-            dropTables: components["schemas"]["DropTableBaseEntity"][];
+            inRecipes: Array<components["schemas"]["CraftingRecipeBaseEntity"]>;
+            vendors: Array<components["schemas"]["VendorBaseEntity"]>;
+            dropTables: Array<components["schemas"]["DropTableBaseEntity"]>;
         };
         UpdateResourceVariantDto: {
             name?: string;
@@ -1860,9 +1860,9 @@ export interface components {
             name: string;
             skill: components["schemas"]["GatheringSkillBaseEntity"];
             skillId: number;
-            rooms: components["schemas"]["RoomBaseEntity"][];
+            rooms: Array<components["schemas"]["RoomBaseEntity"]>;
             passive: boolean;
-            variants: components["schemas"]["ResourceVariantBaseEntity"][];
+            variants: Array<components["schemas"]["ResourceVariantBaseEntity"]>;
         };
         UpdateResourceDto: {
             name?: string;
@@ -1890,8 +1890,8 @@ export interface components {
             consumable: components["schemas"]["ConsumableBaseWithSkillEntity"];
             consumableId: number;
             recipe?: components["schemas"]["CraftingRecipeBaseEntity"];
-            vendors: components["schemas"]["VendorBaseEntity"][];
-            dropTables: components["schemas"]["DropTableBaseEntity"][];
+            vendors: Array<components["schemas"]["VendorBaseEntity"]>;
+            dropTables: Array<components["schemas"]["DropTableBaseEntity"]>;
         };
         UpdateConsumableVariantDto: {
             name?: string;
@@ -1906,7 +1906,7 @@ export interface components {
             name: string;
             skill?: components["schemas"]["CraftingSkillBaseEntity"];
             skillId: number | null;
-            variants: components["schemas"]["ConsumableVariantBaseEntity"][];
+            variants: Array<components["schemas"]["ConsumableVariantBaseEntity"]>;
         };
         UpdateConsumableDto: {
             name?: string;
@@ -1927,8 +1927,8 @@ export interface components {
             weapon: components["schemas"]["WeaponBaseEntity"];
             weaponId: number;
             recipe?: components["schemas"]["CraftingRecipeBaseEntity"];
-            vendors: components["schemas"]["VendorBaseEntity"][];
-            dropTables: components["schemas"]["DropTableBaseEntity"][];
+            vendors: Array<components["schemas"]["VendorBaseEntity"]>;
+            dropTables: Array<components["schemas"]["DropTableBaseEntity"]>;
         };
         UpdateWeaponVariantDto: {
             name?: string;
@@ -1964,7 +1964,7 @@ export interface components {
             name: string;
             isRanged: boolean;
             isTwoHanded: boolean;
-            variants: components["schemas"]["WeaponVariantBaseEntity"][];
+            variants: Array<components["schemas"]["WeaponVariantBaseEntity"]>;
         };
         UpdateWeaponDto: {
             /**
@@ -1996,8 +1996,8 @@ export interface components {
             armor: components["schemas"]["ArmorBaseEntity"];
             armorId: number;
             recipe?: components["schemas"]["CraftingRecipeBaseEntity"];
-            vendors: components["schemas"]["VendorBaseEntity"][];
-            dropTables: components["schemas"]["DropTableBaseEntity"][];
+            vendors: Array<components["schemas"]["VendorBaseEntity"]>;
+            dropTables: Array<components["schemas"]["DropTableBaseEntity"]>;
         };
         UpdateArmorVariantDto: {
             name?: string;
@@ -2029,7 +2029,7 @@ export interface components {
             slot: "HEAD" | "NECK" | "TORSO" | "BACK" | "HANDS" | "SHIELD" | "LEGS" | "FEET";
             id: number;
             name: string;
-            variants: components["schemas"]["ArmorVariantBaseEntity"][];
+            variants: Array<components["schemas"]["ArmorVariantBaseEntity"]>;
         };
         UpdateArmorDto: {
             /**
@@ -2050,46 +2050,46 @@ export interface components {
         MiscItemEntity: {
             id: number;
             name: string;
-            vendors: components["schemas"]["VendorBaseEntity"][];
-            inRecipes: components["schemas"]["CraftingRecipeBaseEntity"][];
-            dropTables: components["schemas"]["DropTableBaseEntity"][];
+            vendors: Array<components["schemas"]["VendorBaseEntity"]>;
+            inRecipes: Array<components["schemas"]["CraftingRecipeBaseEntity"]>;
+            dropTables: Array<components["schemas"]["DropTableBaseEntity"]>;
         };
         UpdateMiscItemDto: {
             name?: string;
         };
         CreateDropTableDto: {
             monsterVariantId: number;
-            resourceVariantIds?: number[];
-            weaponVariantIds?: number[];
-            armorVariantIds?: number[];
-            consumableVariantIds?: number[];
-            miscItemIds?: number[];
+            resourceVariantIds?: Array<number>;
+            weaponVariantIds?: Array<number>;
+            armorVariantIds?: Array<number>;
+            consumableVariantIds?: Array<number>;
+            miscItemIds?: Array<number>;
             currency?: number | null;
         };
         DropTableEntity: {
             id: number;
             monsterVariant: components["schemas"]["MonsterVariantBaseWithMonsterEntity"];
             monsterVariantId: number;
-            resourceVariants: components["schemas"]["ResourceVariantBaseEntity"][];
-            weaponVariants: components["schemas"]["WeaponVariantBaseEntity"][];
-            armorVariants: components["schemas"]["ArmorVariantBaseEntity"][];
-            consumableVariants: components["schemas"]["ConsumableVariantBaseEntity"][];
-            miscItems: components["schemas"]["MiscItemBaseEntity"][];
+            resourceVariants: Array<components["schemas"]["ResourceVariantBaseEntity"]>;
+            weaponVariants: Array<components["schemas"]["WeaponVariantBaseEntity"]>;
+            armorVariants: Array<components["schemas"]["ArmorVariantBaseEntity"]>;
+            consumableVariants: Array<components["schemas"]["ConsumableVariantBaseEntity"]>;
+            miscItems: Array<components["schemas"]["MiscItemBaseEntity"]>;
             currency: number | null;
         };
         UpdateDropTableDto: {
             monsterVariantId?: number;
-            resourceVariantIds?: number[];
-            weaponVariantIds?: number[];
-            armorVariantIds?: number[];
-            consumableVariantIds?: number[];
-            miscItemIds?: number[];
+            resourceVariantIds?: Array<number>;
+            weaponVariantIds?: Array<number>;
+            armorVariantIds?: Array<number>;
+            consumableVariantIds?: Array<number>;
+            miscItemIds?: Array<number>;
             currency?: number | null;
-            removeResourceVariantIds?: number[];
-            removeWeaponVariantIds?: number[];
-            removeArmorVariantIds?: number[];
-            removeConsumableVariantIds?: number[];
-            removeMiscItemIds?: number[];
+            removeResourceVariantIds?: Array<number>;
+            removeWeaponVariantIds?: Array<number>;
+            removeArmorVariantIds?: Array<number>;
+            removeConsumableVariantIds?: Array<number>;
+            removeMiscItemIds?: Array<number>;
         };
         CreateMonsterVariantDto: {
             name: string;
@@ -2178,9 +2178,9 @@ export interface components {
             skillId: number;
             region: components["schemas"]["RegionBaseEntity"];
             regionId: number;
-            rooms: components["schemas"]["RoomBaseEntity"][];
+            rooms: Array<components["schemas"]["RoomBaseEntity"]>;
             passive: boolean;
-            variants: components["schemas"]["MonsterVariantBaseEntity"][];
+            variants: Array<components["schemas"]["MonsterVariantBaseEntity"]>;
         };
         UpdateMonsterDto: {
             /**
@@ -2206,36 +2206,36 @@ export interface components {
         CreateVendorDto: {
             name?: string | null;
             npcId: number;
-            resourceVariantIds?: number[];
-            weaponVariantIds?: number[];
-            armorVariantIds?: number[];
-            consumableVariantIds?: number[];
-            miscItemIds?: number[];
+            resourceVariantIds?: Array<number>;
+            weaponVariantIds?: Array<number>;
+            armorVariantIds?: Array<number>;
+            consumableVariantIds?: Array<number>;
+            miscItemIds?: Array<number>;
         };
         VendorEntity: {
             id: number;
             name?: string | null;
             npc: components["schemas"]["NpcBaseEntity"];
             npcId: number;
-            resourceVariants: components["schemas"]["ResourceVariantBaseEntity"][];
-            consumableVariants: components["schemas"]["ConsumableVariantBaseEntity"][];
-            weaponVariants: components["schemas"]["WeaponVariantBaseEntity"][];
-            armorVariants: components["schemas"]["ArmorVariantBaseEntity"][];
-            miscItems: components["schemas"]["MiscItemBaseEntity"][];
+            resourceVariants: Array<components["schemas"]["ResourceVariantBaseEntity"]>;
+            consumableVariants: Array<components["schemas"]["ConsumableVariantBaseEntity"]>;
+            weaponVariants: Array<components["schemas"]["WeaponVariantBaseEntity"]>;
+            armorVariants: Array<components["schemas"]["ArmorVariantBaseEntity"]>;
+            miscItems: Array<components["schemas"]["MiscItemBaseEntity"]>;
         };
         UpdateVendorDto: {
             name?: string | null;
             npcId?: number;
-            resourceVariantIds?: number[];
-            weaponVariantIds?: number[];
-            armorVariantIds?: number[];
-            consumableVariantIds?: number[];
-            miscItemIds?: number[];
-            removeResourceVariantIds?: number[];
-            removeWeaponVariantIds?: number[];
-            removeArmorVariantIds?: number[];
-            removeConsumableVariantIds?: number[];
-            removeMiscItemIds?: number[];
+            resourceVariantIds?: Array<number>;
+            weaponVariantIds?: Array<number>;
+            armorVariantIds?: Array<number>;
+            consumableVariantIds?: Array<number>;
+            miscItemIds?: Array<number>;
+            removeResourceVariantIds?: Array<number>;
+            removeWeaponVariantIds?: Array<number>;
+            removeArmorVariantIds?: Array<number>;
+            removeConsumableVariantIds?: Array<number>;
+            removeMiscItemIds?: Array<number>;
         };
         CreateNpcDto: {
             name: string;
@@ -2244,8 +2244,8 @@ export interface components {
             id: number;
             name: string;
             vendor?: components["schemas"]["VendorBaseEntity"];
-            questSteps: components["schemas"]["QuestStepBaseEntity"][];
-            rooms: components["schemas"]["RoomBaseEntity"][];
+            questSteps: Array<components["schemas"]["QuestStepBaseEntity"]>;
+            rooms: Array<components["schemas"]["RoomBaseEntity"]>;
         };
         UpdateNpcDto: {
             name?: string;
@@ -2284,7 +2284,7 @@ export interface components {
             name: string;
             region: components["schemas"]["RegionBaseEntity"];
             regionId: number;
-            steps: components["schemas"]["QuestStepBaseEntity"][];
+            steps: Array<components["schemas"]["QuestStepBaseEntity"]>;
         };
         UpdateQuestDto: {
             name?: string;
@@ -2405,7 +2405,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["RegionEntity"][];
+                    "application/json": Array<components["schemas"]["RegionEntity"]>;
                 };
             };
         };
@@ -2575,7 +2575,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["RoomEntity"][];
+                    "application/json": Array<components["schemas"]["RoomEntity"]>;
                 };
             };
         };
@@ -2745,7 +2745,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["GatheringSkillRequirementEntity"][];
+                    "application/json": Array<components["schemas"]["GatheringSkillRequirementEntity"]>;
                 };
             };
         };
@@ -2915,7 +2915,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["GatheringSkillEntity"][];
+                    "application/json": Array<components["schemas"]["GatheringSkillEntity"]>;
                 };
             };
         };
@@ -3085,7 +3085,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CraftingSkillRequirementEntity"][];
+                    "application/json": Array<components["schemas"]["CraftingSkillRequirementEntity"]>;
                 };
             };
         };
@@ -3255,7 +3255,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CraftingRecipeEntity"][];
+                    "application/json": Array<components["schemas"]["CraftingRecipeEntity"]>;
                 };
             };
         };
@@ -3425,7 +3425,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CraftingSkillEntity"][];
+                    "application/json": Array<components["schemas"]["CraftingSkillEntity"]>;
                 };
             };
         };
@@ -3595,7 +3595,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CombatSkillRequirementEntity"][];
+                    "application/json": Array<components["schemas"]["CombatSkillRequirementEntity"]>;
                 };
             };
         };
@@ -3765,7 +3765,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["CombatSkillEntity"][];
+                    "application/json": Array<components["schemas"]["CombatSkillEntity"]>;
                 };
             };
         };
@@ -3971,7 +3971,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ResourceVariantEntity"][];
+                    "application/json": Array<components["schemas"]["ResourceVariantEntity"]>;
                 };
             };
         };
@@ -4141,7 +4141,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ResourceEntity"][];
+                    "application/json": Array<components["schemas"]["ResourceEntity"]>;
                 };
             };
         };
@@ -4311,7 +4311,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ConsumableVariantEntity"][];
+                    "application/json": Array<components["schemas"]["ConsumableVariantEntity"]>;
                 };
             };
         };
@@ -4481,7 +4481,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ConsumableEntity"][];
+                    "application/json": Array<components["schemas"]["ConsumableEntity"]>;
                 };
             };
         };
@@ -4651,7 +4651,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["WeaponVariantEntity"][];
+                    "application/json": Array<components["schemas"]["WeaponVariantEntity"]>;
                 };
             };
         };
@@ -4821,7 +4821,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["WeaponEntity"][];
+                    "application/json": Array<components["schemas"]["WeaponEntity"]>;
                 };
             };
         };
@@ -4991,7 +4991,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ArmorVariantEntity"][];
+                    "application/json": Array<components["schemas"]["ArmorVariantEntity"]>;
                 };
             };
         };
@@ -5161,7 +5161,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ArmorEntity"][];
+                    "application/json": Array<components["schemas"]["ArmorEntity"]>;
                 };
             };
         };
@@ -5331,7 +5331,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["MiscItemEntity"][];
+                    "application/json": Array<components["schemas"]["MiscItemEntity"]>;
                 };
             };
         };
@@ -5501,7 +5501,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["DropTableEntity"][];
+                    "application/json": Array<components["schemas"]["DropTableEntity"]>;
                 };
             };
         };
@@ -5671,7 +5671,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["MonsterVariantEntity"][];
+                    "application/json": Array<components["schemas"]["MonsterVariantEntity"]>;
                 };
             };
         };
@@ -5841,7 +5841,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["MonsterEntity"][];
+                    "application/json": Array<components["schemas"]["MonsterEntity"]>;
                 };
             };
         };
@@ -6011,7 +6011,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["VendorEntity"][];
+                    "application/json": Array<components["schemas"]["VendorEntity"]>;
                 };
             };
         };
@@ -6181,7 +6181,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["NpcEntity"][];
+                    "application/json": Array<components["schemas"]["NpcEntity"]>;
                 };
             };
         };
@@ -6351,7 +6351,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["QuestStepEntity"][];
+                    "application/json": Array<components["schemas"]["QuestStepEntity"]>;
                 };
             };
         };
@@ -6521,7 +6521,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["QuestEntity"][];
+                    "application/json": Array<components["schemas"]["QuestEntity"]>;
                 };
             };
         };

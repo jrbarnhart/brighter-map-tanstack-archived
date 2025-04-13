@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchDropTables } from './dropTables'
 import queryConfig from '../queryConfig'
+import { fetchDropTables } from './dropTables'
 
 export const dropTablesKey = 'drop-tables'
 

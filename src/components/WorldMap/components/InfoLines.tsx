@@ -1,9 +1,9 @@
 // The title has a bg and the info lines have a different bg
 // THe info lines need to have variations based on the type of info
 
-import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 import { Text } from '@react-three/drei'
 import { useMemo } from 'react'
+import type { CombinedRoomData } from '@/lib/hooks/useCombinedData'
 
 type InfoLinesProps = {
   roomData: CombinedRoomData
@@ -15,10 +15,10 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
 
   // Construct label info lines
   const infoLines = useMemo(() => {
-    const infoLines: string[] = []
+    const infoLines: Array<string> = []
 
-    if (monsters?.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
-    if (resources?.length)
+    if (monsters.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
+    if (resources.length)
       infoLines.push(...resources.map((r) => `🪵 ${r.name}`))
     if (portal) infoLines.push('🌐 Portal')
     if (obelisk) infoLines.push('🗿 Obelisk')

@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchArmorVariants } from './armorVariants'
 import queryConfig from '../queryConfig'
+import { fetchArmorVariants } from './armorVariants'
 
 export const armorVariantsKey = 'armor-variants'
 

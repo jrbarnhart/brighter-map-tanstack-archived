@@ -1,6 +1,6 @@
-import type { paths } from '@/lib/types/apiTypes'
-import { axiosClient } from '../axiosClient'
 import axios from 'axios'
+import { axiosClient } from '../axiosClient'
+import type { paths } from '@/lib/types/apiTypes'
 
 export async function fetchConsumableVariants() {
   // console.info('Fetching consumable variants...');

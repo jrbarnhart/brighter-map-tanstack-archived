@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchBaseMapData } from './baseMapData'
 import queryConfig from '../queryConfig'
+import { fetchBaseMapData } from './baseMapData'
 
 export const baseMapDataKey = 'base-map-data'
 

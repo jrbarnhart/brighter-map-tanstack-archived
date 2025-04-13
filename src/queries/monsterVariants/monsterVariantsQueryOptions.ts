@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchMonsterVariants } from './monsterVariants'
 import queryConfig from '../queryConfig'
+import { fetchMonsterVariants } from './monsterVariants'
 
 export const monsterVariantsKey = 'monster-variants'
 

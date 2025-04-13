@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
-import { fetchQuests } from './quests'
 import queryConfig from '../queryConfig'
+import { fetchQuests } from './quests'
 
 export const questsKey = 'quests'
 
