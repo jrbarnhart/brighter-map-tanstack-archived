@@ -9,18 +9,7 @@ type RoomLabelProps = {
 }
 
 export default function RoomLabel({ roomData }: RoomLabelProps) {
-  const {
-    name,
-    id,
-    originOffset,
-    points,
-    labelOffset,
-    monsters,
-    resources,
-    portal,
-    obelisk,
-    rift,
-  } = roomData
+  const { name, id, originOffset, points, labelOffset } = roomData
 
   // Calculate lable position
   const adjustedPoints: Array<[number, number]> = useMemo(() => {
@@ -49,37 +38,6 @@ export default function RoomLabel({ roomData }: RoomLabelProps) {
   const labelX = labelPosition[0]
   const labelY = labelPosition[1]
   const labelZ = 0.2
-
-  // Construct label info lines
-  const infoLines = useMemo(() => {
-    const infoLines: Array<string> = []
-
-    if (monsters.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
-    if (resources.length)
-      infoLines.push(...resources.map((r) => `🪵 ${r.name}`))
-    if (portal) infoLines.push('🌐 Portal')
-    if (obelisk) infoLines.push('🗿 Obelisk')
-    if (rift) infoLines.push('🌀 Storage')
-    return infoLines
-  }, [roomData])
-
-  // Estimate background size
-  const longestLineLength = useMemo(
-    () =>
-      [roomData.name, ...infoLines].reduce((a, b) => {
-        return a.length > b.length ? a : b
-      }).length,
-    [roomData],
-  )
-
-  const bgWidth = useMemo(
-    () => 1 + longestLineLength * 0.3,
-    [longestLineLength],
-  )
-  const bgHeight = useMemo(
-    () => 1.25 + infoLines.length * 0.6,
-    [longestLineLength],
-  )
 
   return (
     <>

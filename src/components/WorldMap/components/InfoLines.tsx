@@ -15,15 +15,14 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
 
   // Construct label info lines
   const infoLines = useMemo(() => {
-    const infoLines: Array<string> = []
+    const lines: Array<string> = []
 
-    if (monsters.length) infoLines.push(...monsters.map((m) => `🧟 ${m.name}`))
-    if (resources.length)
-      infoLines.push(...resources.map((r) => `🪵 ${r.name}`))
-    if (portal) infoLines.push('🌐 Portal')
-    if (obelisk) infoLines.push('🗿 Obelisk')
-    if (rift) infoLines.push('🌀 Storage')
-    return infoLines
+    if (monsters.length) lines.push(...monsters.map((m) => `🧟 ${m.name}`))
+    if (resources.length) lines.push(...resources.map((r) => `🪵 ${r.name}`))
+    if (portal) lines.push('🌐 Portal')
+    if (obelisk) lines.push('🗿 Obelisk')
+    if (rift) lines.push('🌀 Storage')
+    return lines
   }, [roomData])
 
   // Estimate background size
