@@ -22,7 +22,7 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
   const LINE_OFFSET_MOD = 0.08
 
   // Room data properties
-  const { monsters, resources, portal, obelisk, rift } = roomData
+  const { monsters, resources, portal, obelisk, rift, name } = roomData
 
   // Construct label info lines
   const infoLines = useMemo(() => {
@@ -40,9 +40,12 @@ export default function InfoLines({ roomData }: InfoLinesProps) {
   const bgDimensions = useMemo(() => {
     if (infoLines.length === 0) return { width: 0, height: 0 }
 
-    const longestLineLength = infoLines.reduce((a, b) =>
+    const longestInfoLineLength = infoLines.reduce((a, b) =>
       a.length > b.length ? a : b,
     ).length
+
+    const longestLineLength =
+      longestInfoLineLength > name.length ? longestInfoLineLength : name.length
 
     const textHeight =
       infoLines.length * FONT_HEIGHT +
