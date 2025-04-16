@@ -27,7 +27,10 @@ function App() {
   const { data: lazyData, handlers: lazyHandlers } = useLazyQueries()
 
   return (
-    <div id="app-container" className="relative h-svh w-svw flex">
+    <div
+      id="app-container"
+      className="relative h-svh w-svw flex overflow-hidden"
+    >
       <FiltersPanel open={filtersOpen} setOpen={setFiltersOpen} />
       <div className="w-full absolute top-0 right-0 z-10 p-8">
         <MapSearchBar
