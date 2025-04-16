@@ -1,4 +1,4 @@
-import { Book, ListFilterPlus } from 'lucide-react'
+import { BookOpen, ListFilterPlus } from 'lucide-react'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import type { SetStateAction } from 'react'
@@ -18,6 +18,7 @@ export default function MapControls({
       className="w-full flex items-center justify-between gap-4"
     >
       <Button
+        className="cursor-pointer bg-sky-800 hover:bg-sky-600 md:scale-150"
         onClick={() => {
           setFiltersOpen(true)
         }}
@@ -26,11 +27,12 @@ export default function MapControls({
       </Button>
       <Input type="search" placeholder="Search..." className="md:max-w-80" />
       <Button
+        className="cursor-pointer bg-green-800 hover:bg-green-600 md:scale-150"
         onClick={() => {
           setInfoOpen(true)
         }}
       >
-        <Book />
+        <BookOpen />
       </Button>
     </div>
   )
