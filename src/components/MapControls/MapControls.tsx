@@ -27,13 +27,17 @@ export default function MapControls({
       >
         <ListFilterPlus aria-hidden />
       </Button>
-      <Label htmlFor="search" aria-label="Search">
+      <Label
+        htmlFor="search"
+        aria-label="Search"
+        className="bg-background/90 border border-border rounded-lg pl-2"
+      >
         <Search aria-hidden />
         <Input
           id="search"
           type="search"
           placeholder="Search..."
-          className="md:max-w-80"
+          className="md:max-w-80 border-l border-t-0 border-r-0 border-b-0 rounded-tl-none rounded-bl-none"
         />
       </Label>
       <Button
