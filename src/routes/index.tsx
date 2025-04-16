@@ -4,6 +4,8 @@ import { baseMapDataQueryOptions } from '@/queries/baseMapData/baseMapDataQueryO
 
 import useLazyQueries from '@/lib/hooks/useLazyQueries'
 import WorldMap from '@/components/WorldMap/WorldMap'
+import FiltersPanel from '@/components/FiltersPanel/FiltersPanel'
+import { useState } from 'react'
 
 export const Route = createFileRoute('/')({
   loader: ({ context: { queryClient } }) =>
@@ -16,11 +18,15 @@ function App() {
   const baseMapQuery = useSuspenseQuery(baseMapDataQueryOptions)
   const baseMapData = baseMapQuery.data
 
+  // Side panel state
+  const [filtersOpen, setFiltersOpen] = useState(true)
+
   // Lazy data loading
   const { data: lazyData, handlers: lazyHandlers } = useLazyQueries()
 
   return (
-    <div id="app-container" className="h-svh w-svw">
+    <div id="app-container" className="relative h-svh w-svw flex">
+      <FiltersPanel open={filtersOpen} setOpen={setFiltersOpen} />
       <WorldMap baseMapData={baseMapData} />
     </div>
   )
