@@ -13,6 +13,7 @@
     "get-api-types": "pnpx openapi-typescript https://brshapi.com/api-json -o ./src/lib/types/apiTypes.d.ts"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.0",
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.1",
     "@tailwindcss/vite": "^4.0.6",
