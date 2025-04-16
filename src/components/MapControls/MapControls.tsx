@@ -18,6 +18,7 @@ export default function MapControls({
       className="w-full flex items-center justify-between gap-4"
     >
       <Button
+        aria-label="open-filters-panel"
         className="cursor-pointer bg-sky-800 hover:bg-sky-600 md:scale-150"
         onClick={() => {
           setFiltersOpen(true)
@@ -27,6 +28,7 @@ export default function MapControls({
       </Button>
       <Input type="search" placeholder="Search..." className="md:max-w-80" />
       <Button
+        aria-label="open-info-panel"
         className="cursor-pointer bg-green-800 hover:bg-green-600 md:scale-150"
         onClick={() => {
           setInfoOpen(true)
