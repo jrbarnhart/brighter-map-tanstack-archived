@@ -19,7 +19,7 @@ export default function FiltersPanel({ open, setOpen }: FiltersPanelProps) {
       )}
     >
       <Button
-        className="self-end w-10 h-10 md:w-12 md:h-12 cursor-pointer bg-gray-200 hover:bg-gray-300"
+        className="w-10 h-10 md:w-12 md:h-12 cursor-pointer bg-gray-200 hover:bg-gray-300"
         onClick={() => {
           setOpen(false)
         }}
