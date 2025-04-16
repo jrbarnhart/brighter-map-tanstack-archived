@@ -1,11 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useSuspenseQuery } from '@tanstack/react-query'
+import { useState } from 'react'
 import { baseMapDataQueryOptions } from '@/queries/baseMapData/baseMapDataQueryOptions'
-
 import useLazyQueries from '@/lib/hooks/useLazyQueries'
 import WorldMap from '@/components/WorldMap/WorldMap'
 import FiltersPanel from '@/components/FiltersPanel/FiltersPanel'
-import { useState } from 'react'
 import MapSearchBar from '@/components/MapControls/MapControls'
 import InfoPanel from '@/components/InfoPanel/InfoPanel'
 
