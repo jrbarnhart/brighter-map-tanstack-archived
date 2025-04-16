@@ -20,7 +20,7 @@ export default function MapControls({
     >
       <Button
         aria-label="Open Filters Panel"
-        className="cursor-pointer bg-sky-800 hover:bg-sky-600 md:scale-150"
+        className="cursor-pointer bg-sky-800 hover:bg-sky-600 md:h-14 md:w-14"
         onClick={() => {
           setFiltersOpen(true)
         }}
@@ -38,7 +38,7 @@ export default function MapControls({
       </Label>
       <Button
         aria-label="Open Info Panel"
-        className="cursor-pointer bg-green-800 hover:bg-green-600 md:scale-150"
+        className="cursor-pointer bg-green-800 hover:bg-green-600 md:h-14 md:w-14"
         onClick={() => {
           setInfoOpen(true)
         }}
