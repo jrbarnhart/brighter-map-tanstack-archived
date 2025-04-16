@@ -1,6 +1,7 @@
-import { BookOpen, ListFilterPlus } from 'lucide-react'
+import { BookOpen, ListFilterPlus, Search } from 'lucide-react'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
+import { Label } from '../ui/label'
 import type { SetStateAction } from 'react'
 
 type MapSearchBar = {
@@ -18,23 +19,31 @@ export default function MapControls({
       className="w-full flex items-center justify-between gap-4"
     >
       <Button
-        aria-label="open-filters-panel"
+        aria-label="Open Filters Panel"
         className="cursor-pointer bg-sky-800 hover:bg-sky-600 md:scale-150"
         onClick={() => {
           setFiltersOpen(true)
         }}
       >
-        <ListFilterPlus />
+        <ListFilterPlus aria-hidden />
       </Button>
-      <Input type="search" placeholder="Search..." className="md:max-w-80" />
+      <Label htmlFor="search" aria-label="Search">
+        <Search aria-hidden />
+        <Input
+          id="search"
+          type="search"
+          placeholder="Search..."
+          className="md:max-w-80"
+        />
+      </Label>
       <Button
-        aria-label="open-info-panel"
+        aria-label="Open Info Panel"
         className="cursor-pointer bg-green-800 hover:bg-green-600 md:scale-150"
         onClick={() => {
           setInfoOpen(true)
         }}
       >
-        <BookOpen />
+        <BookOpen aria-hidden />
       </Button>
     </div>
   )
