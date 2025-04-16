@@ -23,6 +23,7 @@ export default function InfoPanel({ open, setOpen }: InfoPanelProps) {
         onClick={() => {
           setOpen(false)
         }}
+        inert={!open ? true : undefined}
       >
         <ArrowRightToLine />
       </Button>

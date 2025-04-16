@@ -23,6 +23,7 @@ export default function FiltersPanel({ open, setOpen }: FiltersPanelProps) {
         onClick={() => {
           setOpen(false)
         }}
+        inert={!open ? true : undefined}
       >
         <ArrowLeftToLine />
       </Button>
